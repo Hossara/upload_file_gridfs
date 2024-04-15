@@ -1,23 +1,49 @@
-# Getting Started with [Fastify-CLI](https://www.npmjs.com/package/fastify-cli)
-This project was bootstrapped with Fastify-CLI.
+# Upload file into GridFS using fastify.js
+This has been a research and test project for me to find and test different methods of uploading files and actually the best method of uploading files and saving them in GridFs.
 
-## Available Scripts
+I'm using fastify as a server framework and tap as testing framework.
 
-In the project directory, you can run:
+### Build and run
+You can use docker to build and test the project. Just run:
 
-### `npm run dev`
+```bash
+dokcer-compose up -d
+```
+And then the backend is available with port `8085` and Mongo dashboard with port `8005`.
 
-To start the app in dev mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+If you need to test the code, just run:
+```bash
+dokcer-compose -f docker-compose.test.yaml up
+```
+And the tap will run some tests and print you the test results.
 
-### `npm start`
+### Commands
+```bash
+# To start backend
+pnpm start
 
-For production mode
+# To build application
+pnpm build
 
-### `npm run test`
+# To test the code
+pnpm test
 
-Run the test cases.
+# Run automatically before pnpm build
+pnpm prebuild 
 
-## Learn More
+# Run automatically before pnpm start
+pnpm prestart 
+```
 
-To learn Fastify, check out the [Fastify documentation](https://fastify.dev/docs/latest/).
+### Contributors
+- Hossein Araghi
+  - [GitHub](https://github.com/hossara)
+  - [LinkedIn](https://linkedin.com/in/hossara)
+  - [Email](mailto:hossara.dev@gmail.com)
+  - [Instagram](https://instagram.com/hossara.dev)
+
+### Donate me
+
+<a href="https://coffeebede.ir/hossara">
+  <img src="https://img.shields.io/badge/buy me a coffee-darkgreen.svg?&style=for-the-badge&logo=buymeacoffee&logoColor=white" height=30>
+</a>
