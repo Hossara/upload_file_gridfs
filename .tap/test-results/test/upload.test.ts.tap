@@ -1,0 +1,42 @@
+Server listening on localhost:8085
+TAP version 14
+uploading
+Interstellar.mkv
+{
+  payload: FormData {
+    _overheadLength: 154,
+    _valueLength: 0,
+    _valuesToMeasure: [ [ReadStream] ],
+    writable: false,
+    readable: true,
+    dataSize: 0,
+    maxDataSize: 2097152,
+    pauseStreams: true,
+    _released: false,
+    _streams: [
+      '----------------------------811045528508897885297139\r\n' +
+        'Content-Disposition: form-data; name="file"; filename="README.md"\r\n' +
+        'Content-Type: text/markdown\r\n' +
+        '\r\n',
+      [DelayedStream],
+      [Function: bound ]
+    ],
+    _currentStream: null,
+    _insideLoop: false,
+    _pendingNext: false,
+    _boundary: '--------------------------811045528508897885297139'
+  },
+  headers: {
+    'content-type': 'multipart/form-data; boundary=--------------------------811045528508897885297139'
+  }
+}
+{"level":30,"time":1713219276870,"pid":36,"hostname":"a132b8f8bc55","reqId":"req-1","req":{"method":"POST","url":"/upload","hostname":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1713219276877,"pid":36,"hostname":"a132b8f8bc55","msg":"Server listening at http://0.0.0.0:8085"}
+hi
+{"level":30,"time":1713219276993,"pid":36,"hostname":"a132b8f8bc55","reqId":"req-1","res":{"statusCode":200},"responseTime":121.65104799903929,"msg":"request completed"}
+uploaded
+# Subtest: Submit huge multipart file
+    ok 1 - returns a status code of 200
+    1..1
+ok 1 - Submit huge multipart file # time=191.748ms
+

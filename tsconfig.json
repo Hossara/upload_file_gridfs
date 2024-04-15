@@ -7,7 +7,7 @@
     "noImplicitAny": true,
     "allowJs": true,
     "checkJs": true,
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
