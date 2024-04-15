@@ -38,3 +38,8 @@ services:
 volumes:
   mongo-volume-upload-gridfs:
     external: true
+
+networks:
+  upload_gridfs:
+    external: true
+    name: upload_gridfs
