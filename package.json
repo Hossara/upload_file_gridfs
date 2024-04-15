@@ -7,7 +7,8 @@
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
     "prestart": "pnpm run build",
-    "start": "nodemon"
+    "start": "nodemon",
+    "test": "tap run --timeout 0 test/*.test.ts"
   },
   "keywords": [],
   "author": "",
