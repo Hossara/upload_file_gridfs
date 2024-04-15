@@ -7,7 +7,7 @@ import util from "node:util"
 const pump = util.promisify(pipeline)
 
 // Initialize app
-const app = Fastify({
+export const app = Fastify({
     logger: true
 })
 
@@ -17,18 +17,6 @@ app.register(mongo, {
     forceClose: true,
     url: 'mongodb://mongo_gridfs/test_fs'
 })
-
-// Route options for file upload
-// const uploadOptions: RouteShorthandOptions = {
-//     schema: {
-//         body: {
-//             type: 'object',
-//             properties: {
-//                 file: { type: 'object', format: 'binary' }
-//             }
-//         }
-//     }
-// }
 
 app.post('/upload', async (request, reply) => {
      const file = await request.file()
@@ -45,12 +33,12 @@ app.post('/upload', async (request, reply) => {
 
     // Handle completion of file upload
     uploadStream.on('finish', () => {
-        reply.send({ success: true, message: 'File uploaded successfully' });
+       return reply.send({ success: true, message: 'File uploaded successfully' });
     })
 
     // Handle any errors during file upload
     uploadStream.on('error', (err) => {
-        reply.status(500).send({ success: false, message: 'Error uploading file', error: err })
+        return reply.status(500).send({ success: false, message: 'Error uploading file', error: err })
     })
 })
 
