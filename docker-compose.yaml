@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+  mongo_gridfs:
+    container_name: mongo_gridfs
+    image: mongo:latest
+    restart: on-failure
+    volumes:
+      - mongo-volume-upload-gridfs
+
+  mongo_dash_gridfs:
+    container_name: mongo_dash_girdfs
+    restart: on-failure
+    image: mongo-express
+    ports:
+      - "8005:8002"
+    environment:
+      - PORT=8002
+      - ME_CONFIG_OPTIONS_EDITORTHEME=ambiance
+      - ME_CONFIG_BASICAUTH_USERNAME=hossara
+      - ME_CONFIG_BASICAUTH_PASSWORD=1234
+      - ME_CONFIG_MONGODB_URL=mongodb://mongo_gridfs:27017
+    depends_on:
+      - mongo_gridfs
+
+  upload_gridfs:
+    container_name: upload_gridfs
+    restart: on-failure
+    ports:
+      - "8085:8085"
+    build: ./
+    volumes:
+      - ./:/app
+    depends_on:
+      - mongo_gridfs
+      - mongo_dash_gridfs
+
+volumes:
+  mongo-volume-upload-gridfs:
+    external: true
